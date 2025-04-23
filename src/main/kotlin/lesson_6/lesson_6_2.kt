@@ -6,27 +6,6 @@ fun main() {
                 "которое нужно засечь:"
     )
     val seconds = readln().toInt()
-    var secondsNew = seconds
-
-    while (secondsNew > 0) {
-        secondsNew--
-        Thread.sleep(1000)
-    }
+    Thread.sleep(seconds * 1000L)
     println("Прошло ${seconds} секунд")
 }
-
-//do {
-// println("${seconds--}")
-// Thread.sleep(start = true)
-//    }
-// while (seconds > 0)
-//{
-//
-
-//
-//
-//   break
-// println("Прошло $seconds секунд")
-//}
-//
-//
