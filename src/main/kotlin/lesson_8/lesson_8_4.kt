@@ -7,7 +7,7 @@ fun main() {
     println(recipe.contentToString())
     println("Какой ингредиент в рецепте Вы хотите заменить?")
     val request = readln()
-    var indexToReplace = 1
+    val indexToReplace = recipe.indexOf(request)
     for (i in recipe) {
         if (request == i) {
             println("Какой ингредиент Вы хотели бы добавить?")
