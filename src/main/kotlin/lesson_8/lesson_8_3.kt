@@ -2,20 +2,14 @@ package lesson_8
 
 fun main() {
     println(
-        "Рецепт приготовления пасты карбонары " +
-                "со сливками и беконом"
+        "Рецепт приготовления пасты карбонары со сливками и беконом"
     )
     println("Какой ингредиент Вы хотите в рецепте найти?")
-    val viewsByDay = arrayOf(
-        "спаггети", "бекон", "желтки", "пармезан", "чеснок",
-        "петрушка", "соль"
-    )
-    val request = readln().lowercase()
-    val ingredient = viewsByDay.any { it.lowercase() == request }
-
-    if (ingredient) {
-        println("Ингредиент $request рецепте есть ")
+    val recipe = arrayOf("пармезан", "чеснок", "петрушка", "соль")
+    val request = readln()
+    if (request in recipe) {
+        println("Ингредиент $request в рецепте есть")
     } else {
-        println("Такого ингредиента в рецепте нет")
+        println("Ингредиента в рецепте нет")
     }
 }
