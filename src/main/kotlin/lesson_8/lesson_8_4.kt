@@ -8,14 +8,12 @@ fun main() {
     println("Какой ингредиент в рецепте Вы хотите заменить?")
     val request = readln()
     val indexToReplace = recipe.indexOf(request)
-    for (i in recipe) {
-        if (request == i) {
-            println("Какой ингредиент Вы хотели бы добавить?")
-            val recipe1 = readln()
-                      recipe[indexToReplace] = recipe1
-            println("Готово! Вы сохранили следующий список: ${recipe.contentToString()}")
-            return
-        }
+    if (indexToReplace >= 0) {
+        println("Какой ингредиент Вы хотели бы добавить?")
+        val newIngredient = readln()
+        recipe[indexToReplace] = newIngredient
+        println("Готово! Вы сохранили следующий список: ${recipe.contentToString()}")
+        return
     }
     println("Такого ингредиента в рецепте нет")
 }
