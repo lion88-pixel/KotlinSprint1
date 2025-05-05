@@ -1,21 +1,20 @@
 package lesson_7
 
 fun main() {
+
     val passwordLenght = 6
     val password = buildString {
         for (i in 1..passwordLenght) {
+            val numbers = ('0'..'9').random()
+            val letters = ('a'..'z').random()
             append(
                 if (i % 2 == 0) {
-                    ('0'..'9').random()
+                    numbers
                 } else {
-                    ('a'..'z').random()
+                    letters
                 }
             )
         }
     }
     println("Сгенерированный пароль: $password ")
 }
-
-
-
-
