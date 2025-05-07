@@ -1,7 +1,9 @@
 package lesson_10
 
+const val MIN_LENGTH = 4
+
 fun textLength(text: String): Boolean {
-    return text.length >= 4
+    return text.length >= MIN_LENGTH
 }
 
 fun main() {
