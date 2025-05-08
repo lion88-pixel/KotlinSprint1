@@ -1,15 +1,15 @@
 package lesson_10
 
-fun generatorPassword(length: Int): String =
+fun generatePassword(length: Int): String =
     buildString {
         for (i in 0 until length) {
             val numbersUsed = (0..9).random()
-            val symbolsUsed = "!\"#$%&'()*+,-./".random()
+            val symbolsUsed = (33..47).toList().map { it.toChar() }.filter { it in '!'..'/' }
             append(
                 if (i % 2 == 0) {
                     numbersUsed
                 } else {
-                    symbolsUsed
+                    symbolsUsed.random()
                 }
             )
         }
@@ -18,6 +18,6 @@ fun generatorPassword(length: Int): String =
 fun main() {
     println("Введите требуемую длину пароля: ")
     val passwordLength = readln().toInt()
-    val password = generatorPassword(passwordLength)
+    val password = generatePassword(passwordLength)
     println("Результат: $password")
 }
