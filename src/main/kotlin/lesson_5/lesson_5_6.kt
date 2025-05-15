@@ -13,7 +13,7 @@ fun main() {
     val categoria = when {
         imt < insufficientWeight -> "Недостаточная масса тела"
         imt < weightIsNormal -> "Нормальная масса тела"
-        imt < overWeight -> "Избыточная масса тела"
+        imt < overWeight -> "Избыточная масса  тела"
         else -> "Ожирение"
     }
     val formatImt = String.format("%.2f", imt)
