@@ -7,7 +7,7 @@ fun authenticate(login: String, password: String): String? =
     if (login == CORRECT_LOGIN && password == CORRECT_PASSWORD) generateToken() else null
 
 fun generateToken(): String {
-    val chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    val chars = ('a'..'z') + ('A'..'Z') + ('0'..'9')
     return (1..32).map { chars.random() }.joinToString("")
 }
 
