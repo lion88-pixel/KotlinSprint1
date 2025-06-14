@@ -11,9 +11,10 @@ class ContactInfo1(
         println("- Имя:$name\n- Номер:$phoneNumber\n- Компания:$companyText")
     }
 }
-    fun main() {
-        val contact1 = ContactInfo1("Александр", 89263170915)
-        val contact2 = ContactInfo1("Петр", 89256676715, "MK-M")
-        contact1.printContact()
-        contact2.printContact()
+
+fun main() {
+    val contact1 = ContactInfo1("Александр", 89263170915)
+    val contact2 = ContactInfo1("Петр", 89256676715, "MK-M")
+    contact1.printContact()
+    contact2.printContact()
 }
