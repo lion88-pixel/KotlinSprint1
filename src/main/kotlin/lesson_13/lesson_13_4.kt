@@ -1,40 +1,42 @@
 package lesson_13
 
-data class Contact5(
+data class Contact7(
     val name: String,
     val phoneNumber: Long,
-    val company: String? = null
+    val company: String? = null,
 ) {
     fun displayContact() {
-        println("Имя: $name, Телефон: $phoneNumber, Компания: $company")
+        println("Имя: $name, Телефон: $phoneNumber, Компания: ${company ?: "Не указана"}")
     }
 }
 
-fun main() {
-    val phoneBook = mutableListOf<Contact5>()
+fun String.isNullOrEmpty(): Boolean {
+    return this == null || this.isEmpty()
+}
 
+fun main() {
+    val phoneBook = mutableListOf<Contact7>()
     while (true) {
         print("Добавить контакт? (да/нет): ")
         val addContact = readlnOrNull()?.lowercase()
-
         if (addContact != "да") {
             break
         }
-
         print("Введите имя контакта: ")
         val name = readlnOrNull() ?: ""
-
         print("Введите номер телефона: ")
-        val phoneNumberString = readlnOrNull() ?: ""
-        val phoneNumber = phoneNumberString.toLongOrNull()
+        val phoneNumber = readlnOrNull()?.toLongOrNull()
 
         if (phoneNumber == null) {
             println("Ошибка: Некорректный номер телефона. Контакт не будет добавлен.")
             continue
         }
         print("Введите название компании (или оставьте пустым): ")
-        val company = readlnOrNull()
-        val newContact = Contact5(name, phoneNumber, company)
+        var company = readlnOrNull()
+        if (company.isNullOrEmpty()) {
+            company = null
+        }
+        val newContact = Contact7(name, phoneNumber, company)
         phoneBook.add(newContact)
     }
     println("\nТелефонная книга:")
