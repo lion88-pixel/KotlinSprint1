@@ -1,23 +1,30 @@
 package lesson_12
 
-class WeatherData(kelvinTemp: Int, cityName: String, weatherCondition: String) {
+const val TEMPERATYRE = 273
 
-    val temperatureCelsius: Int
-    val city: String = cityName
-    val condition: String = weatherCondition
+class WeatherData(
+    kelvinDayTemp: Int,
+    kelvinNightTemp: Int,
+    city: String,
+    condition: String,
+) {
+    val dayTemperature = kelvinDayTemp - TEMPERATYRE
+    val nightTemperature = kelvinNightTemp - TEMPERATYRE
+    val city = city
+    val condition = condition
 
     init {
-        temperatureCelsius = kelvinTemp - 273
         printWeather()
     }
 
     fun printWeather() {
         println("Погода в городе $city:")
-        println("Температура: $temperatureCelsius°C")
+        println("Дневная температура: ${dayTemperature}°C")
+        println("Ночная температура: ${nightTemperature}°C")
         println("Состояние: $condition")
     }
 }
 
 fun main() {
-    val weather = WeatherData(300, "Воронеж", "Дождь")
+    val weather = WeatherData(298, 291,"Воронеж", "Дождь")
 }
