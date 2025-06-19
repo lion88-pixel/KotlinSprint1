@@ -10,10 +10,6 @@ data class Contact7(
     }
 }
 
-fun String.isNullOrEmpty(): Boolean {
-    return this == null || this.isEmpty()
-}
-
 fun main() {
     val phoneBook = mutableListOf<Contact7>()
     while (true) {
@@ -26,7 +22,6 @@ fun main() {
         val name = readlnOrNull() ?: ""
         print("Введите номер телефона: ")
         val phoneNumber = readlnOrNull()?.toLongOrNull()
-
         if (phoneNumber == null) {
             println("Ошибка: Некорректный номер телефона. Контакт не будет добавлен.")
             continue
