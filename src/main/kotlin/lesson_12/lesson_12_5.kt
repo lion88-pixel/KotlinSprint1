@@ -2,31 +2,47 @@ package lesson_12
 
 import kotlin.random.Random
 
-class DailyWeather(kelvinDayTemp: Int, kelvinNightTemp: Int, val hasPrecipitation: Boolean) {
+const val TEMPERATURE_OFFSET = 273
 
-    val dayTempCelsius: Int = kelvinDayTemp - 273
-    val nightTempCelsius: Int = kelvinNightTemp - 273
+class WeatherInfo(
+    kelvinDayTemp: Int,
+    kelvinNightTemp: Int,
+    city: String,
+    condition: String, hasPrecipitation: Boolean
+) {
+    val dayTemperature: Int = kelvinDayTemp - TEMPERATURE_OFFSET
+    val nightTemperature: Int = kelvinNightTemp - TEMPERATURE_OFFSET
+    val city = city
+    val condition = condition
+    val hasPrecipitation = hasPrecipitation
 
-    fun printInfo() {
-        println("День: $dayTempCelsius°C, Ночь: $nightTempCelsius°C, Осадки: $hasPrecipitation")
+    fun printWeatherInfo() {
+        println("Погода в городе $city:")
+        println("Дневная температура: $dayTemperature°C")
+        println("Ночная температура: $nightTemperature°C")
+        println("Состояние: $condition, Осадки: ${if (hasPrecipitation) "Да" else "Нет"}")
     }
 }
 
 fun main() {
-    val monthWeather = mutableListOf<DailyWeather>()
-    repeat(30) {
-        val dayKelvin = Random.nextInt(270, 310)  // Температура днем в Кельвинах (примерно -3..37°C)
-        val nightKelvin = Random.nextInt(260, 300) // Температура ночью
-        val precipitation = Random.nextBoolean()   // Есть осадки или нет
-        val dailyWeather = DailyWeather(dayKelvin, nightKelvin, precipitation)
-        monthWeather.add(dailyWeather)
+    val weatherList = List(30) {
+        val dayTemp = Random.nextInt(283, 308)
+        val nightTemp = Random.nextInt(278, 303)
+        val city = "Город ${it + 1}"
+        val condition = when (Random.nextInt(1, 4)) {
+            1 -> "Солнечно"
+            2 -> "Облачно"
+            else -> "Дождь"
+        }
+        val hasPrecipitation = Random.nextBoolean()
+        WeatherInfo(dayTemp, nightTemp, city, condition, hasPrecipitation)
     }
-    val dayTemps = monthWeather.map { it.dayTempCelsius }
-    val nightTemps = monthWeather.map { it.nightTempCelsius }
-    val avgDayTemp = dayTemps.average()
-    val avgNightTemp = nightTemps.average()
-    val precipitationDays = monthWeather.count { it.hasPrecipitation }
-    println("Средняя дневная температура за месяц: ${"%.1f".format(avgDayTemp)}°C")
-    println("Средняя ночная температура за месяц: ${"%.1f".format(avgNightTemp)}°C")
-    println("Количество дней с осадками: $precipitationDays")
+    val dayTemperatures = weatherList.map { it.dayTemperature }
+    val nightTemperatures = weatherList.map { it.nightTemperature }
+    val averageDayTemperature = dayTemperatures.average()
+    val averageNightTemperature = nightTemperatures.average()
+    val precipitationDays = weatherList.count { it.hasPrecipitation }
+    println("Средняя дневная температура: ${averageDayTemperature}°C")
+    println("Средняя ночная температура: ${averageNightTemperature}°C")
+    println("Дней с осадками: $precipitationDays")
 }
