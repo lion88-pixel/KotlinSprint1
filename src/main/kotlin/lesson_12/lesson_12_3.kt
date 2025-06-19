@@ -9,7 +9,7 @@ class WeatherInfo(
     condition: String,
 ) {
     val dayTemperature: Int = kelvinDayTemp - TEMPERATYRE
-    var nightTemperature: Int = kelvinNightTemp - TEMPERATYRE
+    val nightTemperature: Int = kelvinNightTemp - TEMPERATYRE
     val city: String = city
     val condition: String = condition
 
