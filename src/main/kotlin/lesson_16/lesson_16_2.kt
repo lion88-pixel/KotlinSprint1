@@ -1,10 +1,8 @@
 package lesson_16
 
-class Circle(private val radius: Double) {
+private const val PI = 3.14
 
-    companion object {
-        private const val PI = 3.14
-    }
+class Circle(private val radius: Double) {
 
     fun calculateCircumference(): Double {
         return 2 * PI * radius
