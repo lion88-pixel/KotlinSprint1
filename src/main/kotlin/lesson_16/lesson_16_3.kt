@@ -9,7 +9,7 @@ class User(val login: String, private val passwordHash: Int) {
 
 fun main() {
     val user = User("MyLogin", "MySecretPassword".hashCode())
-    print("Введите пароль:")
+    print("Введите пароль :")
     val enteredPassword = readlnOrNull() ?: ""
     val isPasswordValid = user.validatePassword(enteredPassword)
     println("Введенный пароль ${if (isPasswordValid) "верен" else "неверен"}.")
