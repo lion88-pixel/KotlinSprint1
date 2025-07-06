@@ -1,19 +1,24 @@
 package lesson_17
 
-class QuizElement(val question: String, var answer: String) {
-    init {
-        println("QuizElement создан с вопросом: $question и ответом: $answer")
-    }
+class QuizElement(questionText: String, answerText: String) {
+    var question: String = questionText
+        get() {
+            println("Вызван геттер для question")
+            return field
+        }
 
-    val questionLength: Int
-        get() = question.length
+    var answer: String = answerText
+        get() = field
+        set(value) {
+            field = value
+        }
 }
 
 fun main() {
     val quizElement = QuizElement("Столица Франции?", "Париж")
+
     println("Вопрос: ${quizElement.question}")
     println("Ответ: ${quizElement.answer}")
     quizElement.answer = "Лондон"
     println("Новый ответ: ${quizElement.answer}")
-    println("Длина вопроса ${quizElement.questionLength}")
 }
