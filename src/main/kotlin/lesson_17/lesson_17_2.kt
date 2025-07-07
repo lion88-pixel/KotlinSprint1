@@ -1,25 +1,39 @@
 package lesson_17
 
-class Ship(val name: String, val averageSpeed: Int, val homePort: String) {
+class Ship(averageSpeed: Int, homePort: String) {
+
+    var name: String = "Без имени"
+        set(value) {
+            println("Нельзя менять имя корабля!")
+        }
+
+    var averageSpeed: Int = averageSpeed
+        get() = field
+        set(value) {
+            println("Изменение средней скорости корабля на $value")
+            field = value
+        }
+    var homePort: String = homePort
+        get() = field
+        set(value) {
+            println("Изменение порта корабля на $value")
+            field = value
+        }
 
     init {
         println("Корабль '$name' создан. Скорость: $averageSpeed, Порт: $homePort")
     }
 
-    var currentHomePort: String = homePort
-        set(value) {
-            println("Меняем порт приписки корабля '$name' на '$value'")
-            field = value
-        }
-
     fun displayInfo() {
-        println("Имя корабля: $name, Скорость: $averageSpeed, Порт приписки: $currentHomePort")
+        println("Имя корабля: $name, Скорость: $averageSpeed, Порт приписки: $homePort")
     }
 }
 
 fun main() {
-    val ship = Ship("Aurora", 25, "Санкт-Петербург")
+    val ship = Ship(25, "Санкт-Петербург")
     ship.displayInfo()
-    ship.currentHomePort = "Владивосток"
+    ship.name = "NewName"
+    ship.averageSpeed = 30
+    ship.homePort = "Владивосток"
     ship.displayInfo()
 }
