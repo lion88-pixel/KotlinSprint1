@@ -1,39 +1,30 @@
 package lesson_18
 
-
 abstract class Animal(val name: String) {
-    abstract fun eat()
-    abstract fun sleep()
+    open fun eat() {
+        println("$name -> Ест")
+    }
+
+    open fun sleep() {
+        println("$name -> Спит")
+    }
 }
 
 class Fox(name: String) : Animal(name) {
     override fun eat() {
         println("$name -> Ест ягоды")
     }
-
-    override fun sleep() {
-        println("$name -> Спит")
-    }
 }
 
-// Класс для собаки
 class Dog(name: String) : Animal(name) {
     override fun eat() {
         println("$name -> Ест кости")
-    }
-
-    override fun sleep() {
-        println("$name -> Спит")
     }
 }
 
 class Cat(name: String) : Animal(name) {
     override fun eat() {
         println("$name -> Ест рыбу")
-    }
-
-    override fun sleep() {
-        println("$name -> Спит")
     }
 }
 
@@ -45,5 +36,6 @@ fun main() {
 
     for (animal in animals) {
         animal.eat()
+        animal.sleep()
     }
 }
