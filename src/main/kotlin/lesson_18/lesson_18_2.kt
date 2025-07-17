@@ -2,8 +2,8 @@ package lesson_18
 
 import kotlin.random.Random
 
-open class Dice(val sides: Int) {
-    open fun roll() {
+abstract class Dice(val sides: Int) {
+    fun roll() {
         val result = Random.nextInt(1, sides + 1)
         println("Выпало: $result (Кость с $sides гранями)")
     }
@@ -18,7 +18,5 @@ fun main() {
     val dice6 = Dice6()
     val dice8 = Dice8()
     val diceList: List<Dice> = listOf(dice4, dice6, dice8)
-    for (dice in diceList) {
-        dice.roll()
-    }
+    diceList.forEach { dice -> dice.roll() }
 }
