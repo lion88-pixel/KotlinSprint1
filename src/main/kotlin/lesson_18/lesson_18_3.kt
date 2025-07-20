@@ -1,11 +1,9 @@
 package lesson_18
 
 abstract class Animal(val name: String) {
-    open fun eat() {
-        println("$name -> Ест")
-    }
+    abstract fun eat()
 
-    open fun sleep() {
+    fun sleep() {
         println("$name -> Спит")
     }
 }
